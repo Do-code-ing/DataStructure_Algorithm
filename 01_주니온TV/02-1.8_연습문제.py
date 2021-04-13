@@ -3,6 +3,10 @@
 #     - 만약, 그렇다면 f를 사용하지 않고 반복문으로 피보나치 항을 구하시오.
 
 def fibo2(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
     x = 0
     y = 1
     for _ in range(2, n+1):
