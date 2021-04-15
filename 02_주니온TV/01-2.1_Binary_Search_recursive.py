@@ -3,7 +3,6 @@ def location(S, low, high, x):
         return 0
     else:
         mid = (low+high) // 2
-        print(low, mid, high)
         if x == S[mid]:
             return[mid]
         elif x < S[mid]:
