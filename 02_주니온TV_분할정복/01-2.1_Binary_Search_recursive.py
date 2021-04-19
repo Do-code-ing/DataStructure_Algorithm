@@ -4,7 +4,7 @@ def location(S, low, high, x):
     else:
         mid = (low+high) // 2
         if x == S[mid]:
-            return[mid]
+            return [mid]
         elif x < S[mid]:
             return location(S, low, mid-1, x)
         else:
