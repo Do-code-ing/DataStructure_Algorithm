@@ -1,13 +1,13 @@
 def floyd2(W):
     n = len(W)
     D = W
-    P = [[-1] * n for _ in range(n)]
+    P = [[-1] * n for _ in range(n)] # i에서 j로 갈 때 어느 정점 k를 지나쳐 갈 것인가
     for k in range(n):
         for i in range(n):
             for j in range(n):
                 if D[i][j] > D[i][k] + D[k][j]:
                     D[i][j] = D[i][k] + D[k][j]
-                    P[i][j] = k
+                    P[i][j] = k # 지나쳐 갈 때 정점 저장
     return D, P
 
 INF = 999

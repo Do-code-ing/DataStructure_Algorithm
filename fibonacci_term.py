@@ -9,5 +9,5 @@ def fibo(n):
         f.append(f[i-1] + f[i-2])
     return f[n]
 
-for i in range(2000):
+for i in range(10):
     print(fibo(i), end=" ")

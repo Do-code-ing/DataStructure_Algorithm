@@ -16,7 +16,7 @@ def path(P, u, v): # u:출발정점, v:도착정점
     if P[u][v] != -1:
         path(P, u, P[u][v])
         print("v%d"%(P[u][v]), end=" -> ")
-        path(P, P[u][v], v)
+        path(P, P[u][v], v) # 이미 마지막 지나온 곳을 업데이트 했으므로 필요 없는듯 ?
 
 INF = 999
 W = [
