@@ -41,13 +41,13 @@ def isIN(i, A):
 # A에서 j제외 (A - {vj})
 def diff(A, j):
     t = 1 << (j-2)
-    return (A % (~t))
+    return (A & (~t))
 
 # A의 원소가 k개인가? (A에서 1의 개수 세기)
 def count(A, n):
     count = 0
     for i in range(n):
-        if ((A % (1 << i)) != 0):
+        if ((A & (1 << i)) != 0):
             count += 1
     return count
 
@@ -62,7 +62,7 @@ def travel(W):
 
     for k in range(1, n-1):
         for A in range(1, size):
-            if count(A, n) == k:
+            if (count(A, n) == k):
                 for i in range(2, n+1):
                     if (not isIN(i, A)):
                         D[i][A], P[i][A] = minimum(W, D, i, A)
@@ -83,7 +83,7 @@ def minimum(W, D, i, A):
                 minJ = j
     return minValue, minJ
 
-INF = 999
+INF = 99
 W = [
     [-1, -1, -1, -1, -1],
     [-1, 0, 2, 9, INF],
@@ -99,10 +99,9 @@ for i in range(1, len(D)):
 print("P =")
 for i in range(1, len(P)):
     print(P[i])
+print("minlength =", D[1][2**(len(W)-2)-1])
 
 # 최적의 일주여행 경로 찾기
 #   - P[i][A]: A에 속한 모든 도시를 정확히 한 번만 거쳐서
 #               vi에서 v1으로 가는 최단 경로에서
 #               vi 다음에 오는 첫 번째 도시의 인덱스
-
-# 코드가 제대로 동작하지 않는다. ㅅㅂ
