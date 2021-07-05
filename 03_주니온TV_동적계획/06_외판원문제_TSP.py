@@ -33,20 +33,21 @@
 
 # i가 A에 포함되어 있느냐 (i in A)
 def isIN(i, A):
-    if A & (1 << (i-2)) != 0:
+    if ((A & (1 << (i-2))) != 0):
         return True
-    return False
+    else:
+        return False
 
 # A에서 j제외 (A - {vj})
 def diff(A, j):
     t = 1 << (j-2)
-    return A % ~t
+    return (A % (~t))
 
 # A의 원소가 k개인가? (A에서 1의 개수 세기)
 def count(A, n):
     count = 0
     for i in range(n):
-        if A % (1 << i) != 0:
+        if ((A % (1 << i)) != 0):
             count += 1
     return count
 
@@ -63,7 +64,7 @@ def travel(W):
         for A in range(1, size):
             if count(A, n) == k:
                 for i in range(2, n+1):
-                    if not isIN(i, A):
+                    if (not isIN(i, A)):
                         D[i][A], P[i][A] = minimum(W, D, i, A)
     
     A = size - 1
@@ -75,9 +76,9 @@ def minimum(W, D, i, A):
     minJ = 1
     n = len(W) - 1
     for j in range(2, n+1):
-        if isIN(j, A):
+        if (isIN(j, A)):
             m = W[i][j] + D[j][diff(A, j)]
-            if minValue > m:
+            if (minValue > m):
                 minValue = m
                 minJ = j
     return minValue, minJ
@@ -103,3 +104,5 @@ for i in range(1, len(P)):
 #   - P[i][A]: A에 속한 모든 도시를 정확히 한 번만 거쳐서
 #               vi에서 v1으로 가는 최단 경로에서
 #               vi 다음에 오는 첫 번째 도시의 인덱스
+
+# 코드가 제대로 동작하지 않는다. ㅅㅂ
